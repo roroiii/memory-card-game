@@ -40,7 +40,7 @@ const MemoryCardGame = () => {
         <>
           <Celebration />
           <div className="congrats">
-            恭喜！卡片匹配成功！<button onClick={handleClickResetGame}>再玩一局</button>
+            Congratulations！<button onClick={handleClickResetGame}>play again</button>
           </div>
         </>
       )}
