@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# 記憶卡牌小遊戲
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+使用 Create React App 製作的記憶卡牌小遊戲。
 
-## Available Scripts
+<img src="./public/pic.png" width="500">
 
-In the project directory, you can run:
+這是一款名為「記憶卡牌遊戲」的小遊戲。在遊戲中，卡片會被打亂並隨機排列在螢幕上。玩家需要點擊兩張卡片以檢視它們是否相符。如果兩張卡片相符，它們將保持翻開狀態；如果不相符，卡片將會翻回原狀。遊戲的目標是在最短的時間內找出所有匹配的卡片組合。
 
-### `npm start`
+This is a small game called "Memory Card Game." In the game, cards are shuffled and randomly arranged on the screen. Players need to click on two cards to see if they match. If the two cards match, they will remain flipped open; if not, the cards will flip back to their original state. The goal of the game is to find all matching card pairs in the shortest time possible.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Story
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. 身為一個使用者，我希望可以自動蓋牌。
+2. 身為一個使用者，我希望可以點擊兩張卡片來檢視它們是否相符。若相符，卡片便保持翻開；若不符，卡片則會翻回原狀。
+3. 身為一個使用者，我希望可以破解遊戲後有一顆再玩一次的按鈕。
 
-### `npm test`
+ᶘ ᵒᴥᵒᶅ
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. As a user, I want to be able to automatically flip cards.
+2. As a user, I want to be able to click on two cards to see if they match. If they match, the cards should remain flipped; if they don't match, the cards should flip back to their original state.
+3. As a user, I want to have a "Play Again" button after completing the game.
 
-### `npm run build`
+### 部署
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+clone 專案至本地端
+Clone the project to your local.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm install`
+`npm start`
