@@ -32,16 +32,14 @@ export default function useGame() {
 
   const handleCheckMatchingCards = useCallback(
     (openCards) => {
-      if (openCards.length === 2) {
-        const [firstCard, secondCard] = openCards;
-        if (cards[firstCard].content === cards[secondCard].content) {
-          setMatchedCards((prev) => [...prev, ...openCards]); // setMatchedCards((prev) => prev.concat(index))
-          setShowCongrats(true);
-        } else {
-          setTimeout(() => {
-            setOpenCards([]);
-          }, 500);
-        }
+      const [firstCard, secondCard] = openCards;
+      if (cards[firstCard].content === cards[secondCard].content) {
+        setMatchedCards((prev) => [...prev, ...openCards]); // setMatchedCards((prev) => prev.concat(index))
+        setOpenCards([]);
+      } else {
+        setTimeout(() => {
+          setOpenCards([]);
+        }, 500);
       }
     },
     [cards]
@@ -52,6 +50,7 @@ export default function useGame() {
     openCards,
     matchedCards,
     showCongrats,
+    setShowCongrats,
 
     handleClickResetGame,
     handleClickOpen,

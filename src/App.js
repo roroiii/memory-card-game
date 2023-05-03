@@ -10,6 +10,7 @@ const MemoryCardGame = () => {
     openCards,
     matchedCards,
     showCongrats,
+    setShowCongrats,
 
     handleClickResetGame,
     handleClickOpen,
@@ -17,8 +18,16 @@ const MemoryCardGame = () => {
   } = useGame();
 
   useEffect(() => {
-    handleCheckMatchingCards(openCards);
+    if (openCards.length === 2) {
+      handleCheckMatchingCards(openCards);
+    }
   }, [handleCheckMatchingCards, openCards]);
+
+  useEffect(() => {
+    if (matchedCards.length === 16) {
+      setShowCongrats(true); // 完成遊戲
+    }
+  }, [matchedCards, setShowCongrats]);
 
   return (
     <>
