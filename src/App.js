@@ -13,59 +13,45 @@ const MemoryCardGame = () => {
     const shuffledCards = cardContents.sort(() => Math.random() - 0.5); // 隨機洗牌排列卡片
 
     return shuffledCards.map((content, index) => {
-      return { id: index, content, isFlipped: false };
+      return { id: index, content };
     });
   }
 
-  function handleClickResetGame() {
+  const handleClickResetGame = () => {
     setShowCongrats(false);
     setOpenCards([]);
-    setMatchedCards([]);
     setMatchedCards([]);
     setTimeout(() => {
       setCards(generateCards());
     }, 500);
-  }
+  };
 
-  function handleClickOpen(index) {
-    if (openCards.length < 2 && !matchedCards.includes(index)) {
+  const handleClickOpen = (index) => {
+    if (openCards.length < 2 && !matchedCards.includes(index) && !openCards.includes(index)) {
       setOpenCards((prev) => [...prev, index]);
     }
-  }
+  };
 
-  const checkMatchingCards = useCallback(
+  const handleCheckMatchingCards = useCallback(
     (openCards) => {
-      const [firstCard, secondCard] = openCards;
-      if (cards[firstCard].content === cards[secondCard].content) {
-        setMatchedCards((prev) => [...prev, ...openCards]); // setMatchedCards((prev) => prev.concat(index))
-      } else {
-        setTimeout(() => {
-          setOpenCards([]);
-        }, 1000);
+      if (openCards.length === 2) {
+        const [firstCard, secondCard] = openCards;
+        if (cards[firstCard].content === cards[secondCard].content) {
+          setMatchedCards((prev) => [...prev, ...openCards]); // setMatchedCards((prev) => prev.concat(index))
+          setShowCongrats(true);
+        } else {
+          setTimeout(() => {
+            setOpenCards([]);
+          }, 500);
+        }
       }
     },
-    [cards]
+    [openCards, cards]
   );
 
   useEffect(() => {
-    if (openCards.length === 2) {
-      checkMatchingCards(openCards);
-    }
-  }, [openCards, checkMatchingCards]);
-
-  useEffect(() => {
-    if (openCards.length === 2) {
-      const [firstCard, secondCard] = openCards;
-      if (cards[firstCard].content === cards[secondCard].content) {
-        setMatchedCards((prev) => [...prev, ...openCards]);
-        setShowCongrats(true); // Add this line
-      } else {
-        setTimeout(() => {
-          setOpenCards([]);
-        }, 1000);
-      }
-    }
-  }, [openCards, cards]);
+    handleCheckMatchingCards(openCards);
+  }, [handleCheckMatchingCards, openCards]);
 
   return (
     <>
