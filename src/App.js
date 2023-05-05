@@ -3,34 +3,40 @@ import { Flipper, Flipped } from 'react-flip-toolkit';
 import Celebration from './component/Celebration';
 import './css/App.css';
 import useGame from './hook/useGame';
+import usePlayer from './hook/usePlayer';
+import useTimer from './hook/useTimer';
+import useHistory from './hook/useHistory';
+import HistoryScore from './component/HistoryScore';
 
-const MemoryCardGame = () => {
+export default function MemoryCardGame() {
   const {
     cards,
     openCards,
     matchedCards,
     showCongrats,
     setShowCongrats,
-
+    timeElapsed,
+    gameHistory,
+    player,
+    handlePlayerNameChange,
     handleClickResetGame,
     handleClickOpen,
     handleCheckMatchingCards,
   } = useGame();
 
-  useEffect(() => {
-    if (openCards.length === 2) {
-      handleCheckMatchingCards(openCards);
-    }
-  }, [handleCheckMatchingCards, openCards]);
-
-  useEffect(() => {
-    if (matchedCards.length === 16) {
-      setShowCongrats(true); // 完成遊戲
-    }
-  }, [matchedCards, setShowCongrats]);
-
   return (
     <>
+      {/* 輸入玩家名稱的區塊 */}
+      <div className="player-name-input">
+        <label htmlFor="player-name">玩家名稱：</label>
+        <input type="text" id="player-name" value={player} onChange={handlePlayerNameChange} />
+      </div>
+
+      {showCongrats ? (
+        <div>總過花了 {Math.floor(timeElapsed / 1000)} 秒完成遊戲</div>
+      ) : (
+        <>{timeElapsed !== 0 && <div>遊戲已經經過了{Math.floor(timeElapsed / 1000)} 秒</div>}</>
+      )}
       <Flipper flipKey={openCards} className="memory-card-game">
         {cards.map((card, index) => (
           <Flipped key={card.id} flipId={card.id}>
@@ -53,8 +59,7 @@ const MemoryCardGame = () => {
           </div>
         </>
       )}
+      <HistoryScore history={gameHistory} />
     </>
   );
-};
-
-export default MemoryCardGame;
+}
