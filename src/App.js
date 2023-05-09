@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 import Celebration from './component/Celebration';
 import './css/App.css';
 import useGame from './hook/useGame';
-import usePlayer from './hook/usePlayer';
-import useTimer from './hook/useTimer';
-import useHistory from './hook/useHistory';
 import HistoryScore from './component/HistoryScore';
 
 export default function MemoryCardGame() {
@@ -14,29 +11,34 @@ export default function MemoryCardGame() {
     openCards,
     matchedCards,
     showCongrats,
-    setShowCongrats,
+
     timeElapsed,
     gameHistory,
     player,
     handlePlayerNameChange,
     handleClickResetGame,
     handleClickOpen,
-    handleCheckMatchingCards,
   } = useGame();
 
   return (
-    <>
+    <div className="memory-box">
+      <div className="game-title-box">
+        <h1 className="game-title">Memory Card Game</h1>
+        <div className="game-info">遊戲說明：按下卡牌後遊戲計時開始，中間無法暫停直至遊戲結束。</div>
+      </div>
       {/* 輸入玩家名稱的區塊 */}
       <div className="player-name-input">
-        <label htmlFor="player-name">玩家名稱：</label>
-        <input type="text" id="player-name" value={player} onChange={handlePlayerNameChange} />
+        <label htmlFor="player-name">輸入比賽名稱：</label>
+        <input type="text" id="player-name" placeholder="神秘人" value={player} onChange={handlePlayerNameChange} />
       </div>
 
-      {showCongrats ? (
-        <div>總過花了 {Math.floor(timeElapsed / 1000)} 秒完成遊戲</div>
-      ) : (
-        <>{timeElapsed !== 0 && <div>遊戲已經經過了{Math.floor(timeElapsed / 1000)} 秒</div>}</>
-      )}
+      <div className={`${showCongrats ? '' : 'game-time-box'}`}>
+        {showCongrats ? (
+          <div className="game-time">總共花了 {Math.floor(timeElapsed / 1000)} 秒完成遊戲</div>
+        ) : (
+          <>{timeElapsed !== 0 && <div className="game-time">遊戲已經經過了{Math.floor(timeElapsed / 1000)} 秒</div>}</>
+        )}
+      </div>
       <Flipper flipKey={openCards} className="memory-card-game">
         {cards.map((card, index) => (
           <Flipped key={card.id} flipId={card.id}>
@@ -60,6 +62,6 @@ export default function MemoryCardGame() {
         </>
       )}
       <HistoryScore history={gameHistory} />
-    </>
+    </div>
   );
 }

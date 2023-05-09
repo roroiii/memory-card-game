@@ -2,22 +2,52 @@ body {
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
+
+  height: 100vh;
+}
+.memory-box {
+  padding: 16px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+}
+.game-title-box {
+  max-width: 325px;
+}
+
+.game-title {
+  font-size: 2rem;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.game-info {
+  font-size: 1rem;
+  white-space: pre-wrap;
+  color: #6c757d;
+  margin-bottom: 16px;
+}
+
+.game-time-box {
+  height: 24px;
+}
+
+.game-time {
+  color: #2196f3;
+  font-size: 0.8rem;
 }
 
 .memory-card-game {
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
+  width: 320px;
   margin: 0 auto;
 }
 
 .card {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   position: relative;
   perspective: 1000px;
 }
@@ -62,4 +92,14 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 20px;
+}
+
+.player-name-input {
+  margin-bottom: 8px;
+}
+
+.player-name-input input {
+  padding: 8px 10px;
+  border: 1px solid #ffc107;
+  border-radius: 3px;
 }

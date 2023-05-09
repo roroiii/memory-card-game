@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function useHistory() {
   const [gameHistory, setGameHistory] = useState(() => {
@@ -6,14 +6,14 @@ export default function useHistory() {
     return storedHistory ? JSON.parse(storedHistory) : [];
   });
 
-  const handleAddHistory = (player, timer) => {
+  const handleAddHistory = useCallback((player, timer) => {
     const newRecord = { player, time: timer }; // 新增這一行
     setGameHistory((prev) => {
       const updatedHistory = [...prev, newRecord];
       localStorage.setItem('gameHistory', JSON.stringify(updatedHistory));
       return updatedHistory;
     });
-  };
+  }, []);
 
   useEffect(() => {
     const storedHistory = localStorage.getItem('gameHistory');

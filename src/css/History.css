@@ -1,0 +1,42 @@
+.history-board {
+  background: #6c6c6c;
+  color: #fff;
+  padding: 8px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 325px;
+}
+
+.history-board h2 {
+  padding-left: 8px;
+  margin: -8px -8px 10px -8px;
+  background: #ffc107;
+  color: #fff;
+}
+
+.history-board .first {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.history-board .li {
+  display: flex;
+}
+
+.history-board .li-name {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.history-board .li-num {
+  margin-right: 8px;
+  background: #ffc107;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

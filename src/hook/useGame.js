@@ -73,20 +73,19 @@ export default function useGame() {
       handleEndTimer();
       handleAddHistory(player, Math.floor(timeElapsed / 1000)); // 新增歷史紀錄
     }
-  }, [matchedCards, setShowCongrats]);
+  }, [matchedCards, setShowCongrats, handleAddHistory, handleEndTimer, player, timeElapsed]);
 
   return {
     cards,
     openCards,
     matchedCards,
     showCongrats,
-    setShowCongrats,
+
     timeElapsed,
     gameHistory,
     player,
     handlePlayerNameChange,
     handleClickResetGame,
     handleClickOpen,
-    handleCheckMatchingCards,
   };
 }
